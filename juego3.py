@@ -12,7 +12,7 @@ class Jugador(object):
 		self.inteligencia = random.randrange(2,5)
 		self.hp = self.hp_max
 		self.mp = self.mp_max
-		self.habilidades = [BolaDeFuego(),GolpeLetal(),Golpiar()]
+		self.habilidades = [BolaDeFuego(),GolpeLetal(),Golpear()]
 		 
 	def __str__(self):
 		return "Jugador: "+str(self.nombre)+" HP: "+str(self.hp)+"/"+str(self.hp_max)+"  MP: "+str(self.mp)+"/"+str(self.mp_max)
@@ -28,7 +28,7 @@ class Jugador(object):
 		print("\nElige una habilidad:\n")
 		print("0 - Bola de fuego (10 MP)")
 		print("1 - Golpe letal (5 MP)")
-		print("2 - Golpiar (0 MP)")
+		print("2 - Golpear (0 MP)")
 		x = input(">")
 		return int(x)
 
@@ -41,7 +41,7 @@ class AI(object):
 		self.inteligencia = random.randrange(2,5)
 		self.hp = self.hp_max
 		self.mp = self.mp_max
-		self.habilidades = [BolaDeFuego(),GolpeLetal(),Golpiar()]
+		self.habilidades = [BolaDeFuego(),GolpeLetal(),Golpear()]
 		 
 	def __str__(self):
 		return "Jugador: "+self.nombre+" HP: "+str(self.hp)+"/"+str(self.hp_max)+"  MP: "+str(self.mp)+"/"+str(self.mp_max)
@@ -84,10 +84,10 @@ class GolpeLetal(object):
 			origen.mp += -5
 			return self.danio
 
-class Golpiar(object):
+class Golpear(object):
 	def __init__(self):
 		self.danio = 0
-		self.nombre = "Golpiar"
+		self.nombre = "Golpear"
 		
 	def devolverAtaque(self,origen):
 		self.danio = origen.inteligencia+origen.fuerza
@@ -125,7 +125,7 @@ def main():
 		print("Haz usado ",j1.habilidades[elec1].nombre)
 		print("Atacando...")
 		time.sleep(1)
-		print("Daño",j1.habilidades[elec1].devolverAtaque(j1))
+		print("Danio",j1.habilidades[elec1].devolverAtaque(j1))
 		time.sleep(0.5)
 		if j1.hp<=0 and j2.hp<=0:
 			break
@@ -136,7 +136,7 @@ def main():
 		print(j2.nombre,"a usado ",j2.habilidades[elec2].nombre)
 		print("Atacando...")
 		time.sleep(1)
-		print("Daño",j2.habilidades[elec2].devolverAtaque(j2))
+		print("Danio",j2.habilidades[elec2].devolverAtaque(j2))
 		time.sleep(2)
 		if j1.hp<=0 or j2.hp<=0:
 			break
